@@ -1,1 +1,1 @@
-njit greetings
+hello world
