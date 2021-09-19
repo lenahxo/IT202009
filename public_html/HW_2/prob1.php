@@ -9,6 +9,43 @@ function processArray($arr) {
     echo "<br>Odds output:<br>";
     //TODO add logic here to echo out only odd values
 
+    /* 18 September 2021
+     * Problem 1
+     * 
+     * Description: Create a single loop that will be able to iterate over any array containing integers.
+     * The loop should output only odd values.
+     * 
+     * @author Alen Holsey
+     */
+
+    
+     //variable for loop counter
+     $arrLen = count($arr);
+    
+     //for loop to iterate array
+    for ($i = 0; $i < $arrLen; $i++)
+    {
+        //base case: if num == 0: next iter
+        if ($arr[$i] == 0)
+        {
+            continue;
+        }
+        
+        //if num mod 2 == 1: echo odd number
+        elseif ($arr[$i] % 2 == 1)
+        {
+            echo $arr[$i];
+        }
+
+        //else: next iter
+        else
+        {
+            continue;
+        }
+
+    } //end loop
+
+    
 }
 echo "Problem 1: Odd Output<br>";
 ?>
