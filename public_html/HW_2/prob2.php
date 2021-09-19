@@ -12,6 +12,7 @@ function getTotal($arr) {
      * 
      * Description: Create a loop that adds floats/decimals of "currency" to get a total value for the passed in array.
      * Make sure it rounds to 2 decimal places and does not face any rounding issues.
+     * https://njit.instructure.com/courses/20242/assignments/174553?module_item_id=606614
      * 
      * @author Alen Holsey
      */

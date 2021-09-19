@@ -7,17 +7,18 @@ function processArray($arr) {
     //use the $arr variable to iterate over
     echo "<br>Processing Array:<br><pre>" . var_export($arr, true) . "</pre>";
     echo "<br>Odds output:<br>";
-    //TODO add logic here to echo out only odd values
 
     /* 18 September 2021
      * Problem 1
      * 
      * Description: Create a single loop that will be able to iterate over any array containing integers.
      * The loop should output only odd values.
+     * https://njit.instructure.com/courses/20242/assignments/174553?module_item_id=606614
      * 
      * @author Alen Holsey
      */
 
+    //TODO add logic here to echo out only odd values
     
     //variable for loop counter
     $arrLen = count($arr);
