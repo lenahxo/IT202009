@@ -35,7 +35,7 @@ function processArray($arr) {
         //if num mod 2 == 1: echo odd number
         elseif ($arr[$i] % 2 == 1)
         {
-            echo $arr[$i];
+            echo "$arr[$i]<br>";
         }
 
         //else: next iter
