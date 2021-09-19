@@ -19,10 +19,10 @@ function processArray($arr) {
      */
 
     
-     //variable for loop counter
-     $arrLen = count($arr);
+    //variable for loop counter
+    $arrLen = count($arr);
     
-     //for loop to iterate array
+    //for loop to iterate array
     for ($i = 0; $i < $arrLen; $i++)
     {
         //base case: if num == 0: next iter

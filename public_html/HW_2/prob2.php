@@ -6,8 +6,39 @@ $a4 = [10.01, -12.22, 0.23, 19.20, -5.13, 3.12];
 function getTotal($arr) {
     echo "<br>Processing Array:<br><pre>" . var_export($arr, true) . "</pre>";
     $total = 0.00;
+
+    /* 18 September 2021
+     * Problem 2
+     * 
+     * Description: Create a loop that adds floats/decimals of "currency" to get a total value for the passed in array.
+     * Make sure it rounds to 2 decimal places and does not face any rounding issues.
+     * 
+     * @author Alen Holsey
+     */
+
     //TODO do adding here
+
+    //variable for loop counter
+    $arrLen = count($arr);
+
+    //for loop to iterate array
+    for ($i = 0; $i < $arrLen; $i++)
+    {
+        //checking correct iter
+        //echo "Adding $arr[$i]<br>";
+
+        //adding numbers
+        $total += $arr[$i];
+
+    }
+
     //TODO do rounding stuff here
+
+    //round total to 2 decimal places
+    $total = round($total, 2);
+
+
+
     echo "The total is " . var_export($total, true);
 }
 echo "Problem 2: Adding Floats<br>";
