@@ -25,7 +25,7 @@
         {
             /* giving nav background */
             list-style-type: none;
-            margin-right: 1325px;
+            margin-right: 0; /*1325px;*/
             padding: 0;
             overflow: hidden;
             background-color: rgb(142, 116, 255);
@@ -35,6 +35,30 @@
         {
             /* navigation horizontal & get rid of marker */
             display: inline;
+        }
+
+        nav li a
+        {
+            display: inline-block;
+            padding: 14px 16px;
+            color: white;
+            /*text-align: center;*/
+        }
+
+        nav li a:hover
+        {
+            background-color:rgb(92, 76, 163)
+        }
+
+
+        ul
+        {
+            list-style: none;
+        }
+
+        ul li:before
+        {
+            content: '✓';
         }
 
     
