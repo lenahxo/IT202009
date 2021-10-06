@@ -9,7 +9,22 @@
             console.log("loaded via javascript");
             //TODO: add any extra onload processing you may need here
 
-            
+            // adding links to array
+            var naviLinks = [], links = document.links;
+
+            for (var i = 0; i < links.length; i++)
+            {
+                naviLinks.push(links[i].href);
+            }
+
+            for (var j = 0; j < naviLinks.length; j++)
+            {
+                naviLinks.addEventListener('click', function() {
+                console.log(this);
+                alert('clicked'); //continue here 5Oct21
+                });
+            }
+
 
         });
         function getCurrentSelection() {
