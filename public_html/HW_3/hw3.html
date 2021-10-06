@@ -8,6 +8,9 @@
         window.addEventListener("load", () => {
             console.log("loaded via javascript");
             //TODO: add any extra onload processing you may need here
+
+            
+
         });
         function getCurrentSelection() {
             setTimeout(() => {
@@ -21,9 +24,16 @@
     <style>
         /* TODO: make edits here */
         
+
+        /* navi horizontal & get rid of marker */
+        nav li
+        {
+            display: inline;
+        }
+
+        /* giving navi background */
         nav ul
         {
-            /* giving nav background */
             list-style-type: none;
             margin-right: 0; /*1325px;*/
             padding: 0;
@@ -31,12 +41,7 @@
             background-color: rgb(142, 116, 255);
         }
 
-        nav li
-        {
-            /* navigation horizontal & get rid of marker */
-            display: inline;
-        }
-
+        /* changing link struct */
         nav li a
         {
             display: inline-block;
@@ -45,20 +50,28 @@
             /*text-align: center;*/
         }
 
+        /* changing link background on hover */
         nav li a:hover
         {
             background-color:rgb(92, 76, 163)
         }
 
-
+        /* setting style to none */
         ul
         {
             list-style: none;
         }
 
-        ul li:before
+        /* adding checkmarks before */
+        ul li ul li::before
         {
             content: '✓';
+        }
+
+        /* uppercase <h1> and <a> first char */
+        h1::first-letter, a::first-letter
+        {
+            text-transform: uppercase;
         }
 
     
