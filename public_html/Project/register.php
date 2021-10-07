@@ -40,12 +40,16 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
     //TODO 3: validate/use
 
     //create array to show all errors
-    $errors = [];
+    //$errors = [];
+
+    $hasErrors = false;
 
     if (empty($email))
     {
         //adds to the end of the array
-        array_push($errors, "Email must be set");
+        //array_push($errors, "Email must be set");
+        flash("Email must be set");
+        $hasErrors = true;
     }
 
     //sanitize
@@ -54,40 +58,52 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
 
     if(!is_valid_email($email))
     {
-        array_push($errors, "Invalid email address");
+        //array_push($errors, "Invalid email address");
+        flash("Invalid email address");
+        $hasErrors = true;
     }
 
 
     if (empty($password))
     {
-        array_push($errors, "Password must be set");
+        //array_push($errors, "Password must be set");
+        flash("Password must be set");
+        $hasErrrors = true;
     }
 
     if (empty($confirm))
     {
-        array_push($errors, "Confirm password must be set");
+        //array_push($errors, "Confirm password must be set");
+        flash("Confirm password must be set");
+        $hasErrrors = true;
     }
 
     //strlen for the length of string
     if (strlen($password) < 8)
     {
-        array_push($errors, "Password must be 8 characters or more");
+        //array_push($errors, "Password must be 8 characters or more");
+        flash("Password must be 8 characters or more", "Warning");
+        $hasErrors = true;
     }
 
     if (strlen($password) > 0 && $password !== $confirm)
     {
-        array_push($errors, "Passwords do not match");
+        //array_push($errors, "Passwords do not match");
+        flash("Password do not match", "Warning");
+        $hasErrors = true;
     }
 
+    /*
     // count for the length of an array
     if (count($errors) > 0)
     {
         echo "<prev>" . var_export($errors, true) . "</prev";
     }
+    */
 
     else
     {
-        echo "Welcome, $email!";
+        flash("Welcome, $email!");
 
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $db = getDB();
@@ -96,17 +112,21 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
         try
         {
             $stmt->execute([":email" => $email, ":password" => $hash]);
-            echo "You've been registered!";
+            flash("You've been registered!");
         }
 
         catch (Exception $e)
         {
-            echo "There was a problem registering";
-            echo "<pre>" . var_export($e, true) . "</pre>";
+            flash("There was a problem registering");
+            flash(var_export($e, true));
         }
         
     }
 
 }
 
+?>
+
+<?php
+require(__DIR__ . "/../../partials/flash.php");
 ?>
