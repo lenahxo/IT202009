@@ -9,28 +9,33 @@
             console.log("loaded via javascript");
             //TODO: add any extra onload processing you may need here
 
-            // adding links to array
-            var naviLinks = [], links = document.links;
+            // adding links to an array
+            var naviLinks = document.links;
 
-            for (var i = 0; i < links.length; i++)
+            // adding click event and trigger function to links 
+            for (var i = 0; i < naviLinks.length; i++)
             {
-                naviLinks.push(links[i].href);
+                naviLinks[i].addEventListener('click', getCurrentSelection);
             }
 
-            for (var j = 0; j < naviLinks.length; j++)
-            {
-                naviLinks.addEventListener('click', function() {
-                console.log(this);
-                alert('clicked'); //continue here 5Oct21
-                });
-            }
-
+            /* debugging
+            console.log(naviLinks);
+            */
 
         });
-        function getCurrentSelection() {
+
+        // passing click event to function
+        function getCurrentSelection(event) {
             setTimeout(() => {
                 //added this delay here as some solutions may require it to update properly (i.e., click code may complete before the navigation changes)
                 //TODO: add code for processing the current selection 
+
+                // passing link name that was clicked to function
+                updateCurrentPage(event.srcElement.innerText);
+
+                /* debugging
+                console.log(event);
+                */
 
                 //Note: likely you'll want to call updateCurrentPage towards the end
             }, 100);
@@ -62,6 +67,7 @@
             display: inline-block;
             padding: 14px 16px;
             color: white;
+            /*font-size: 20px;*/
             /*text-align: center;*/
         }
 
@@ -89,7 +95,21 @@
             text-transform: uppercase;
         }
 
-    
+
+
+        /* extra styling: adding active background */
+        nav li a:active
+        {
+            background-color: rgb(255, 133, 34);
+        }
+
+        /* extra styling: adding border between links */
+        nav li:not(:last-child)
+        {
+            padding: 1em;
+            margin: 0 -.25em;
+            border-right: solid 2px #fff;
+        }
         
 
 
