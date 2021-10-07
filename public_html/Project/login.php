@@ -27,25 +27,39 @@ require(__DIR__."/../../partials/nav.php");?>
      //same as above but for password
      $password = se($_POST, "password", "", false);
      //TODO 3: validate/use
-     $errors = [];
+
+     //$errors = [];
+     $hasErrors = false;
+
      if(empty($email)){
-        array_push($errors, "Email must be set");
+        //array_push($errors, "Email must be set");
+        flash("Email must be set");
+        $hasErrors = true;
      }
      //sanitize
      $email = sanitize_email($email);
+
      //validate
      if(!is_valid_email($email)){
-        array_push($errors, "Invalid email address");
+        //array_push($errors, "Invalid email address");
+        flash("Invalid email address");
+        $hasErrors = true;
      }
      if(empty($password)){
-         array_push($errors, "Password must be set");
+         //array_push($errors, "Password must be set");
+         flash("Password must be set");
+         $hasErrrors = true;
      }
      if(strlen($password) < 8){
-         array_push($errors, "Password must be 8 or more characters");
+         //array_push($errors, "Password must be 8 or more characters");
+         flash("Password must be 8 characters or more", "Warning");
+         $hasErrors = true;
      }
-     if(count($errors) > 0){
-         echo "<pre>" . var_export($errors, true) . "</pre>";
+     /*
+     if(count($hasErrors) > 0){
+         flash(var_export($errors, true));
      }
+     */
      else{
 
          //TODO 4
@@ -68,29 +82,35 @@ require(__DIR__."/../../partials/nav.php");?>
 
                     if (password_verify($password, $hash))
                     {
-                        echo "Welcome, $email";
+                        //flash("Welcome, $email"); -- was getting duplicate welcome msg from login and home
+
                         $_SESSION["user"] = $user;
                         die(header("Location: home.php"));
                     }
 
                     else
                     {
-                        echo "Invalid password";
+                        flash("Invalid password", "danger");
                     }
                 }
 
                 else
                 {
-                    echo "Invalid email";
+                    flash("Invalid email", "danger");
                 }
             }
         }
 
         catch (Exception $e)
         {
-            echo "<pre>" . var_export($e, true) . "</pre>";
+            flash(var_export($e, true));
         }
 
      }
  }
+?>
+
+
+<?php
+require(__DIR__ . "/../../partials/flash.php");
 ?>

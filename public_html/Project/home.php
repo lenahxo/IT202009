@@ -9,12 +9,16 @@ require(__DIR__."/../../partials/nav.php");
 
 if(is_logged_in())
 {
-    echo "Welcome, " . $_SESSION["user"]["email"]; 
+    flash("Welcome, " . $_SESSION["user"]["email"]); 
 }
 
 else
 {
-    echo "You're not logged in";
+    flash("You're not logged in");
 }
 
+?>
+
+<?php
+require(__DIR__ . "/../../partials/flash.php");
 ?>
