@@ -65,7 +65,7 @@ require(__DIR__."/../../partials/nav.php");?>
          //TODO 4
         $db = getDB();
 
-        $stmt = $db->prepare("SELECT email, password FROM Users WHERE email = :email");
+        $stmt = $db->prepare("SELECT id, email, password FROM Users WHERE email = :email");
         try
         {
             $r = $stmt->execute([":email" => $email]);
