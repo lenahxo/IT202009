@@ -4,6 +4,10 @@ reset_session();
 ?>
 <form onsubmit="return validate(this)" method="POST">
     <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" required maxlength="30" />
+    </div>
+    <div>
         <label for="email">Email</label>
         <input type="email" name="email" required />
     </div>
@@ -36,14 +40,30 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
     $password = se($_POST, "password", "", false);
     $confirm = se($_POST, "confirm", "", false);
     $username = se($_POST, "username", "", false);
+
     //TODO 3
 
 
+
     //$errors = [];
+
     $hasError = false;
     if (empty($email)) {
         flash("Email must not be empty");
         $hasError = true;
+
+
+    $hasErrors = false;
+
+    
+
+    if (empty($email))
+    {
+        //adds to the end of the array
+        //array_push($errors, "Email must be set");
+        flash("Email must be set");
+        $hasErrors = true;
+
     }
     //$email = filter_var($email, FILTER_SANITIZE_EMAIL);
     $email = sanitize_email($email);
@@ -53,9 +73,23 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
         flash("Invalid email");
         $hasError = true;
     }
+
     if (!preg_match('/^[a-z0-9_-]{3,30}$/i', $username)) {
         flash("Username must only be alphanumeric and can only contain - or _");
         $hasError = true;
+
+
+    if (!preg_match('/^[a-z0-9_-]{3,30}$/', $username))
+    {
+        flash("Invalid username, must be alphanumeric and only contain - or _");
+    }
+
+    if (empty($password))
+    {
+        //array_push($errors, "Password must be set");
+        flash("Password must be set");
+        $hasErrrors = true;
+
     }
     if (empty($password)) {
         flash("password must not be empty");
@@ -79,6 +113,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
         //flash("Welcome, $email"); //will show on home.php
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $db = getDB();
+
         $stmt = $db->prepare("INSERT INTO Users (email, password, username) VALUES(:email, :password, :username)");
         try {
             $stmt->execute([":email" => $email, ":password" => $hash, ":username" => $username]);
@@ -87,6 +122,14 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
             /*flash("There was a problem registering");
             flash("<pre>" . var_export($e, true) . "</pre>");*/
             users_check_duplicate($e->errorInfo);
+
+        $stmt = $db->prepare("INSERT INTO Users (username, email, password) VALUES (:username, :email, :password)");
+        
+        try
+        {
+            $stmt->execute([":username" => $username, ":email" => $email, ":password" => $hash]);
+            flash("You've been registered!");
+
         }
     }
 }
