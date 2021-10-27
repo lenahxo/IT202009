@@ -7,6 +7,10 @@ require(__DIR__ . "/../../partials/nav.php");
 
 <form onsubmit="return validate(this)" method="POST">
     <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" required maxlength="30" />
+    </div>
+    <div>
         <label for="email">Email</label>
         <input type="email" name="email" required />
     </div>
@@ -36,6 +40,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
     $email = se($_POST, "email", "", false);
     $password = se($_POST, "password", "", false);
     $confirm = se($_POST, "confirm", "", false);
+    $username = se($_POST, "username", "", false);
 
     //TODO 3: validate/use
 
@@ -43,6 +48,8 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
     //$errors = [];
 
     $hasErrors = false;
+
+    
 
     if (empty($email))
     {
@@ -63,6 +70,10 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
         $hasErrors = true;
     }
 
+    if (!preg_match('/^[a-z0-9_-]{3,30}$/', $username))
+    {
+        flash("Invalid username, must be alphanumeric and only contain - or _");
+    }
 
     if (empty($password))
     {
@@ -107,11 +118,11 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
 
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $db = getDB();
-        $stmt = $db->prepare("INSERT INTO Users (email, password) VALUES (:email, :password)");
+        $stmt = $db->prepare("INSERT INTO Users (username, email, password) VALUES (:username, :email, :password)");
         
         try
         {
-            $stmt->execute([":email" => $email, ":password" => $hash]);
+            $stmt->execute([":username" => $username, ":email" => $email, ":password" => $hash]);
             flash("You've been registered!");
         }
 
