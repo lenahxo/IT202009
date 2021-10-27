@@ -119,6 +119,7 @@ function users_check_duplicate($errorInfo)
         //TODO come up with a nice error message
         flash("<pre>" . var_export($errorInfo, true) . "</pre>");
     }
+
 }
 function get_url($dest)
 {
@@ -129,4 +130,5 @@ function get_url($dest)
     }
     //handle relative path
     return $BASE_PATH . $dest;
+
 }
