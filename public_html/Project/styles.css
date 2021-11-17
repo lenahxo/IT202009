@@ -1,23 +1,99 @@
 .alert-success {
-    background-color: green
+    color: green
 }
 
 .alert-warning {
-    background-color: yellow;
+    color: yellow;
 }
 
 .alert-danger {
-    background-color: red;
+    color: red;
 }
 
 .alert-info {
-    background-color: teal;
+    color: rgb(253, 132, 18);
 }
-nav li{display: inline; background-color: rgb(192, 129, 255);}
-nav li a{color: rgb(253, 253, 253)}
+
+
+
+
+/* navi horizontal & get rid of marker */
+nav li
+{
+    display: inline;
+}
+
+/* giving navi background */
+nav ul
+{
+    list-style-type: none;
+    margin-right: 0; /*1325px;*/
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(142, 116, 255);
+}
+
+nav li a
+{
+    display: inline-block;
+    padding: 14px 16px;
+    color: white;
+}
+
+/* changing link background on hover */
+nav li a:hover
+{
+    background-color:rgb(92, 76, 163)
+}
+
+nav li a:active
+{
+    background-color: white;
+}
+
+/* extra styling: adding border between links */
+nav li:not(:last-child)
+{
+    padding: 1em;
+    margin: 0 -.25em;
+    border-right: solid 2px #fff;
+}
+
+
+
+
 /*input{border-radius: 50%;}*/
-body{
+body
+{
     background-color: white;
     color: rgb(0, 0, 0);
+}
 
+label
+{  
+    display: block;
+    /*width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;*/
+    padding: 5px;
+    margin: 0 -.25em;
+    color: rgb(118, 32, 255);
+}
+
+input
+{
+    display: block;
+    padding: 8px;
+    margin: 0 -.25em;
+    color: black;
+}
+
+#divPasswordReset
+{
+    display: block;
+    padding: 8px;
+    margin: 0 -.25em;
+    color: black;
 }
