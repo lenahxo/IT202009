@@ -23,15 +23,20 @@
 ### Proposal Checklist and Evidence
 
 - Milestone 1
-- [ ] \(mm/dd/yyyy of completion) User will be able to register a new account
+- [X] \(7 Oct 2021) User will be able to register a new account
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/register.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/8
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/142447099-99f173c2-a205-4b9b-b775-8564e7344c08.png)
+        - Screenshot #1 Server side validation for form fields
+      - Screenshot #2 ![image](https://user-images.githubusercontent.com/56138268/142448013-84be5cfb-fc52-4e47-837c-bd1bf284281a.png)
+        - Screenshot #2  User table; password (60 chars and hashed)
+      - Screenshot #3 
+        - Screenshots #3 
+
 - [ ] \(mm/dd/yyyy of completion) User will be able to login to their account (given they enter the correct credentials)
   -  List of Evidence of Feature Completion
     - Status: Pending (Completed, Partially working, Incomplete, Pending)
