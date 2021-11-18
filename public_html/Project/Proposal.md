@@ -34,18 +34,26 @@
         - Screenshot #1 Server side validation for form fields
       - Screenshot #2 ![image](https://user-images.githubusercontent.com/56138268/142448013-84be5cfb-fc52-4e47-837c-bd1bf284281a.png)
         - Screenshot #2  User table; password (60 chars and hashed)
-      - Screenshot #3 
-        - Screenshots #3 
+      - Screenshot #3 ![image](https://user-images.githubusercontent.com/56138268/142450473-bc747bfc-8f66-48b0-8f09-c67ef60dfcfa.png)
+        - Screenshot #3 Email should be unique
+      - Screenshot #4 ![image](https://user-images.githubusercontent.com/56138268/142450960-e25c82cf-ccb8-44f2-ab1f-a5c2d8d19fb8.png)
+        - Screenshot #4 Username should be unique
 
-- [ ] \(mm/dd/yyyy of completion) User will be able to login to their account (given they enter the correct credentials)
+- [X] \(17 Nov 2021) User will be able to login to their account (given they enter the correct credentials)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/login.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/21
+      - PR link #2 https://github.com/lenahxo/IT202009/pull/30
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/142455148-1da8a133-26ba-4c37-b979-08d7e2755c8a.png)
+        - Screenshot #1 Server side validation for login fields
+      - Screenshot #2 
+        - Screenshot #2
+      - Screenshot #3
+        - Screenshot #3
+
 - [ ] \(mm/dd/yyyy of completion) User will be able to logout
   -  List of Evidence of Feature Completion
     - Status: Pending (Completed, Partially working, Incomplete, Pending)
