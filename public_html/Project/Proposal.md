@@ -49,74 +49,104 @@
     - Screenshots
       - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/142455148-1da8a133-26ba-4c37-b979-08d7e2755c8a.png)
         - Screenshot #1 Server side validation for login fields
-      - Screenshot #2 
-        - Screenshot #2
-      - Screenshot #3
-        - Screenshot #3
+      - Screenshot #2 ![image](https://user-images.githubusercontent.com/56138268/142458864-a5ae6600-a2d9-4a7a-bb8b-c458fdf246fd.png)
+        - Screenshot #2 Friendly error message for account that doesn't exist
+      - Screenshot #3 ![image](https://user-images.githubusercontent.com/56138268/142459196-9c0680d7-bcc5-48e9-bcb3-5453a48194aa.png)
+        - Screenshot #3 Friendly error message for incorrect password
+      - Screenshot #4 ![image](https://user-images.githubusercontent.com/56138268/142460067-b683b292-5f5f-4da9-a57b-27bbf2f863a2.png)
+      - Screenshot #5 ![image](https://user-images.githubusercontent.com/56138268/142461419-39bec3a3-0b0e-413b-b044-7f7aaf0f85b4.png)
+        - Screenshot #4-#5 Server side fetching and saving details/roles and redirecting to landing page (home)
 
-- [ ] \(mm/dd/yyyy of completion) User will be able to logout
+- [X] \(16 Oct 2021) User will be able to logout
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Status: Completed
     - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/24
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) Basic security rules implemented
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/142463001-d0348955-7422-4b93-ab97-7d23f3125b78.png)
+        - Screenshot #1 Server side redirection to login page and message of successful logout
+      - Screenshot #2 ![image](https://user-images.githubusercontent.com/56138268/142465408-c8e3b385-d278-482c-bfdf-724db40d88da.png)
+        - Screenshot #2 Redirection to login page; successful logout message not displaying
+      - Screenshot #3 ![image](https://user-images.githubusercontent.com/56138268/142466702-b8ea8d83-b0b9-4a77-8502-3469b0fed68b.png)
+        - Screenshot #3 Session destroyed; friendly message displays after hitting the back button once logged out
+
+- [X] \(27 Oct 2021) Basic security rules implemented
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/home.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/21
+      - PR link #2 https://github.com/lenahxo/IT202009/pull/26
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) Basic Roles implemented
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/142471104-fb737a48-b113-4638-b3c3-f974d85d9688.png)
+        - Screenshot #1 Server side security function: check if user is logged in
+      - Screenshot #2 ![image](https://user-images.githubusercontent.com/56138268/142470184-43a68793-b8f1-48b1-a052-dd887f3ff68c.png)
+        - Screenshot #2 Roles table
+
+- [X] \(27 Oct 2021) Basic Roles implemented
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/admin/list_roles.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/26
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) Site should have basic styles/theme applied; everything should be styled
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/142470184-43a68793-b8f1-48b1-a052-dd887f3ff68c.png)
+        - Screenshot #1 Roles table
+      - Screenshot #2 ![image](https://user-images.githubusercontent.com/56138268/142471960-1ed7a887-7ee5-46ba-a0b4-c5661b6d0320.png)
+        - Screenshot #2 User roles table
+      - Screenshot #3 ![image](https://user-images.githubusercontent.com/56138268/142472421-89fcdc43-34e6-49b1-936c-e4ed241dee63.png)
+        - Screenshot #3 Server side check for specific user role
+
+- [X] \(17 Nov 2021) Site should have basic styles/theme applied; everything should be styled
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/issues/17
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) Any output messages/errors should be “user friendly”
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/142473147-496accbf-05cf-43fc-98fa-3085f7881ca1.png)
+        - Screenshot #1 Basic style and theme
+
+- [X] \(16 Oct 2021) Any output messages/errors should be “user friendly”
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/login.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/21
+      - PR link #2 https://github.com/lenahxo/IT202009/pull/24
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) User will be able to see their profile
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/142459196-9c0680d7-bcc5-48e9-bcb3-5453a48194aa.png)
+        - Screenshot #1 Friendly error message for incorrect password
+      - Screenshot #2 ![image](https://user-images.githubusercontent.com/56138268/142466702-b8ea8d83-b0b9-4a77-8502-3469b0fed68b.png)
+        - Screenshot #2 Session destroyed; friendly message displays after hitting the back button once logged out
+
+- [X] \(27 Oct 2021) User will be able to see their profile
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/27
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) User will be able to edit their profile
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/142477933-a5b8b41d-febd-4951-ac86-9cc7f9660593.png)
+        - Screenshot #1 User profile
+
+- [X] \(27 Oct 2021) User will be able to edit their profile
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/27
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/142478759-90a96a66-ef95-4837-b0f7-c14ff869fe62.png)
+        - Screenshot #1 Friendly message display upon check for changed username availability
+      - Screenshot #2 ![image](https://user-images.githubusercontent.com/56138268/142479544-31ca9859-1c65-4164-87fe-2aeb30868553.png)
+        - Screenshot #2 Validation check for email
+      - Screenshot #3 ![image](https://user-images.githubusercontent.com/56138268/142480055-158dcb02-7607-41d2-b6f8-2fbb4dd4b80e.png)
+      - Screenshot #4 ![image](https://user-images.githubusercontent.com/56138268/142480178-ba480b9d-cb8b-4485-983d-4e73c95a1966.png)
+        - Screenshot #3-#4 Does not allow password change without current password provided, but does not display friendly message to user
+
+
 - Milestone 2
 - Milestone 3
 - Milestone 4
