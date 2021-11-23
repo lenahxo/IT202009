@@ -27,9 +27,11 @@ nav li
 nav ul
 {
     list-style-type: none;
-    margin-right: 0; /*1325px;*/
+    position: fixed;
+    top: 0;
+    /*margin-right: 0; /*1325px;*/
     padding: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background-color: rgb(142, 116, 255);
 }
 
@@ -65,35 +67,40 @@ nav li:not(:last-child)
 /*input{border-radius: 50%;}*/
 body
 {
-    background-color: white;
+    background-color: rgb(242, 231, 255);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     color: rgb(0, 0, 0);
 }
 
-label
+div, label
 {  
-    display: block;
-    /*width: 300px;  
-    height: 30px;  
-    border: none;  
-    border-radius: 3px;  
-    padding-left: 8px;*/
-    padding: 5px;
-    margin: 0 -.25em;
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px;
     color: rgb(118, 32, 255);
 }
 
-input
+div, input
 {
-    display: block;
-    padding: 8px;
-    margin: 0 -.25em;
+    height: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+    /*margin: 0 -.25em;*/
     color: black;
 }
 
-#divPasswordReset
+div
 {
-    display: block;
-    padding: 8px;
-    margin: 0 -.25em;
-    color: black;
+    text-align: center;
+    width: 350px;
+    box-sizing: border-box;
+    background: rgb(196, 151, 255);
+    padding: 40px;
+    width: 350px;
 }
