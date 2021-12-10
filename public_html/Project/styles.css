@@ -24,16 +24,13 @@ nav li
 }
 
 /* giving navi background */
-nav ul
+nav 
 {
     list-style-type: none;
-    margin-right: 0; /*1325px;*/
-    padding: 0;
-    overflow: hidden;
     background-color: rgb(142, 116, 255);
 }
 
-nav li a
+nav li
 {
     display: inline-block;
     padding: 14px 16px;
@@ -41,12 +38,12 @@ nav li a
 }
 
 /* changing link background on hover */
-nav li a:hover
+nav li:hover
 {
     background-color:rgb(92, 76, 163)
 }
 
-nav li a:active
+nav li:active
 {
     background-color: white;
 }
@@ -62,38 +59,26 @@ nav li:not(:last-child)
 
 
 
-/*input{border-radius: 50%;}*/
-body
+/**!** Login Page **!**/
+
+/*header font*/
+div h2
 {
-    background-color: white;
-    color: rgb(0, 0, 0);
+    font-family: cursive;
 }
 
-label
-{  
-    display: block;
-    /*width: 300px;  
-    height: 30px;  
-    border: none;  
-    border-radius: 3px;  
-    padding-left: 8px;*/
-    padding: 5px;
-    margin: 0 -.25em;
-    color: rgb(118, 32, 255);
+/*width of input fields*/
+.form-floating.mb-3 
+{
+    min-width: 300px;
+    max-width: 400px;
+    text-align-last: center;
 }
 
-input
+/*center container -- not quite working*/
+#container-fluid
 {
-    display: block;
-    padding: 8px;
-    margin: 0 -.25em;
-    color: black;
+    width: 500px;
+    text-align: center;
 }
 
-#divPasswordReset
-{
-    display: block;
-    padding: 8px;
-    margin: 0 -.25em;
-    color: black;
-}
