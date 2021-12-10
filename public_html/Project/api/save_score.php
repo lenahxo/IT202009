@@ -13,16 +13,15 @@ if ($contentType === "application/json") {
 }
 
 error_log(var_export($data, true));
-if (isset($data["score"]) && isset($data["data"]) && isset($data["nonce"])) {
+
+//validate request has the data wanted
+if (isset($data["score"])) {
     session_start();
     $reject = false;
-    if (!isset($_SESSION["nonce"]) || empty($_SESSION["nonce"]) || $data["nonce"] != $_SESSION["nonce"]) {
-        error_log("Invalid nonce, possible duplicated post");
-        $reject = true;
-    }
-    unset($_SESSION["nonce"]);
     require_once(__DIR__ . "/../../../lib/functions.php");
     $user_id = get_user_id();
+
+    //if user is not logged in, display friendly error message
     if ($user_id <= 0) {
         $reject = true;
         error_log("User not logged in");
@@ -30,11 +29,12 @@ if (isset($data["score"]) && isset($data["data"]) && isset($data["nonce"])) {
         $response["message"] = "You must be logged in to save your score";
         flash($response["message"], "warning");
     }
+
     if (!$reject) {
         $score = (int)se($data, "score", 0, false);
         $calced = 0;
         $data = $data["data"]; //anti-cheating
-        $duck_value = (int)se($_SESSION, "duck_value", 10, false);
+        //$duck_value = (int)se($_SESSION, "duck_value", 10, false);
         $lastDate = null;
         $startDate = null;
         $data_count = count($data);
