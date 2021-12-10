@@ -4,12 +4,13 @@ require(__DIR__ . "/../../partials/nav.php");
 <div class="container-fluid">
     <h2>Heeey! Login!</h2>
     <form onsubmit="return validate(this)" method="POST">
+        <!--floating input fields-->
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com">
+            <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com" required>
             <label for="email">Username/Email</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="pw" name="password" placeholder="Password">
+            <input type="password" class="form-control" id="pw" name="password" placeholder="Password" required minlength="8">
             <label for="password">Password</label>
         </div>
         <input type="submit" value="Login" />

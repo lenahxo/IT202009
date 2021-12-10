@@ -59,12 +59,13 @@ nav li:not(:last-child)
 
 
 
-/**!** Login Page **!**/
+
 
 /*header font*/
 div h2
 {
     font-family: cursive;
+    color: rgb(169, 116, 255);
 }
 
 /*width of input fields*/
@@ -72,13 +73,11 @@ div h2
 {
     min-width: 300px;
     max-width: 400px;
-    text-align-last: center;
 }
 
 /*center container -- not quite working*/
 #container-fluid
 {
     width: 500px;
-    text-align: center;
 }
 
