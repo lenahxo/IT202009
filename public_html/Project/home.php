@@ -12,6 +12,9 @@ if (is_logged_in(true)) {
 }
 //shows session info
 //echo "<pre>" . var_export($_SESSION, true) . "</pre>";
+
+$duration = "week";
+
 ?>
 <?php
 require(__DIR__ . "/../../partials/flash.php");
