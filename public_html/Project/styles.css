@@ -24,18 +24,13 @@ nav li
 }
 
 /* giving navi background */
-nav ul
+nav 
 {
     list-style-type: none;
-    position: fixed;
-    top: 0;
-    /*margin-right: 0; /*1325px;*/
-    padding: 0;
-    /*overflow: hidden;*/
     background-color: rgb(142, 116, 255);
 }
 
-nav li a
+nav li
 {
     display: inline-block;
     padding: 14px 16px;
@@ -43,12 +38,12 @@ nav li a
 }
 
 /* changing link background on hover */
-nav li a:hover
+nav li:hover
 {
     background-color:rgb(92, 76, 163)
 }
 
-nav li a:active
+nav li:active
 {
     background-color: white;
 }
@@ -64,43 +59,24 @@ nav li:not(:last-child)
 
 
 
-/*input{border-radius: 50%;}*/
-body
+
+
+/*header font*/
+div h2
 {
-    background-color: rgb(242, 231, 255);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: rgb(0, 0, 0);
+    font-family: cursive;
+    color: rgb(169, 116, 255);
 }
 
-div, label
-{  
-    position: relative;
-    width: 100%;
-    margin-bottom: 25px;
-    color: rgb(118, 32, 255);
+/*width of input fields*/
+.form-floating.mb-3 
+{
+    min-width: 300px;
+    max-width: 400px;
 }
 
-div, input
+/*center container -- not quite working*/
+#container-fluid
 {
-    height: 50px;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 20px;
-    /*margin: 0 -.25em;*/
-    color: black;
-}
-
-div
-{
-    text-align: center;
-    width: 350px;
-    box-sizing: border-box;
-    background: rgb(196, 151, 255);
-    padding: 40px;
-    width: 350px;
+    width: 500px;
 }
