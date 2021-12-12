@@ -76,7 +76,7 @@ if (isset($_POST["username"])) {
             <input class="form-control" type="search" id="username" name="username" placeholder="Username search" />
             <label for="username">Username Search</label>  
         </div>
-        <input type="submit" value="Search" />
+        <input type="submit" class="btn btn-outline-secondary btn-sm" value="Search" />
     </form>
 
     <form method="POST">
@@ -116,7 +116,7 @@ if (isset($_POST["username"])) {
                 </tr>
             </tbody>
         </table>
-        <input type="submit" value="Toggle Roles" />
+        <input type="submit" class="btn btn-outline-secondary btn-sm" value="Toggle Roles" />
     </form>
 </div>
 <?php
