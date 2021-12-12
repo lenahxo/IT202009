@@ -130,6 +130,8 @@
     - Screenshots
       - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/142477933-a5b8b41d-febd-4951-ac86-9cc7f9660593.png)
         - Screenshot #1 User profile
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/145698559-95b08952-b8df-4249-b80c-11bb37276edf.png)
+        - Screenshot #1 Scores table
 
 - [X] \(27 Oct 2021) User will be able to edit their profile
   -  List of Evidence of Feature Completion

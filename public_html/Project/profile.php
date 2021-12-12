@@ -95,15 +95,18 @@ $user_id = get_user_id();
         Best Score: <?php echo get_best_score($user_id); ?>
     </div>
     <div>
-        <?php $scores = get_latest_scores($user_id); ?>
-        <h3>Score History</h3>
-        <table class="table text-light">
+        <?php $last10 = get_latest_scores($user_id); ?>
+        <h3>Your Last 10 Scores</h3>
+        <table class="table">
             <thead>
                 <th>Score</th>
                 <th>Time</th>
             </thead>
             <tbody>
-                <?php foreach ($scores as $score) : ?>
+
+                <!-- add no score message like in list_roles.php --> 
+                
+                <?php foreach ($last10 as $score) : ?>
                     <tr>
                         <td><?php se($score, "score", 0); ?></td>
                         <td><?php se($score, "created", "-"); ?></td>
