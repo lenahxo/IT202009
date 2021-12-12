@@ -148,47 +148,51 @@
 
 
 - Milestone 2
-- [x] \(3 Dec 2021) Pick a simple game to implement
+- [X] \(3 Dec 2021) Pick a simple game to implement
   -  List of Evidence of Feature Completion
     - Status: Completed
     - Direct Link: N/A
     - Pull Requests
-      - PR link #1 N/A
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/69
     - Issues Link
       - Issues link #1 https://github.com/lenahxo/IT202009/issues/41
     - Screenshots
       - Screenshot #1 N/A
         - Screenshot #1 N/A
 
-- [ ] \(mm/dd/yyyy of completion) The system will save the user’s score at the end of the game if the user is logged in
+- [X] \(11 Dec 2021) The system will save the user’s score at the end of the game if the user is logged in
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: N/A
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/69
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/145698323-bdeb3700-c242-484b-9098-6b133b140879.png)
+        - Screenshot #1 User log in check to save score
 
-- [ ] \(mm/dd/yyyy of completion) The user will be able to see their last 10 scores
+- [X] \(3 Dec 2021) The user will be able to see their last 10 scores
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/69
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/145698402-b8e51f2a-0020-4f00-8d56-b40fd828cb8b.png)
+        - Screenshot #1 Last 10 scores listed on user's profile
+      - Screenshot #2 ![image](https://user-images.githubusercontent.com/56138268/145698433-6d890a51-1f7a-454f-bfba-266c7efc4b0a.png)
+        - Screenshot #2 Code to display on profile
+      - Screenshot #3 ![image](https://user-images.githubusercontent.com/56138268/145698461-742ed287-d90b-4a36-9dd8-972db5df4116.png)
+        - Screenshot #3 Code for function to display latest 10 scores
 
-- [ ] \(mm/dd/yyyy of completion) Create functions that output the following scoreboards (this will be used later)
+- [X] \(3 Dec 2021) Create functions that output the following scoreboards (this will be used later)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: N/A
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/69
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/145698507-530a7777-f2c4-4d7a-8140-8324660124c1.png)
+        - Screenshot #1 Code for top 10 weekly, monthly, and lifetime scores
 
 - Milestone 3
 - Milestone 4
