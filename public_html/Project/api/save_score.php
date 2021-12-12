@@ -99,16 +99,18 @@ if (isset($data["score"])) {
             unset($_SESSION["score_mod"]);
             error_log("Score $score x $mod = " . ($score * $mod));
             save_score($score * $mod, $user_id, true);
-            //purchase feature to pay to earn points (free play doesn't earn)
+            
+            /*purchase feature to pay to earn points (free play doesn't earn)
             if (se($_SESSION, "gen_points", false, false)) {
                 $p = ceil($score / 100);
                 unset($_SESSION["gen_points"]); //remove flag
-                change_bills($p, "win", -1, get_user_account_id(), "You won $p bills with a score of $score (" . $mod . "x multiplier)!");
+                //change_bills($p, "win", -1, get_user_account_id(), "You won $p bills with a score of $score (" . $mod . "x multiplier)!");
                 flash("You won $p bills!");
                 $response["message"] = "You won $p bills!";
             } else {
                 $response["message"] = "Score Saved!";
-            }
+            }*/
+
             error_log("Score of $score saved successfully for $user_id");
         } else {
             $response["message"] = "AntiCheat Detection Triggered. Score rejected.";
