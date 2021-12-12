@@ -111,7 +111,7 @@ $username = get_username();
             <input class="form-control" type="password" name="confirmPassword" id="conp" placeholder="confirm_pw" />
             <label for="conp">Confirm Password</label>
         </div>
-        <input type="submit" value="Update Profile" name="save" />
+        <input type="submit" class="btn btn-outline-secondary btn-sm" value="Update Profile" name="save" />
     </form>
 </div>
 

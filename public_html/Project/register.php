@@ -21,7 +21,7 @@ reset_session();
             <input class="form-control" type="password" name="confirm" placeholder="confirm_pw" required minlength="8" />
             <label for="confirm">Confirm Password</label>
         </div>
-        <input type="submit" value="Register" />
+        <input type="submit" class="btn btn-outline-secondary btn-sm" value="Register" />
     </form>
 </div>
 <script>

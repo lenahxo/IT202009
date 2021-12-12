@@ -35,3 +35,4 @@ Questions:
 1) How do I center the input fields for the login page?
 2) How do I change the navbar-brand with every page?
     -- functions is_logged_in as an example to determine the page you are on
+3) Textera to display larger

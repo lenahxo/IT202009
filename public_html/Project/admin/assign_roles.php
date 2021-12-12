@@ -68,48 +68,57 @@ if (isset($_POST["username"])) {
 
 
 ?>
-<h1>Assign Roles</h1>
-<form method="POST">
-    <input type="search" name="username" placeholder="Username search" />
-    <input type="submit" value="Search" />
-</form>
-<form method="POST">
-    <?php if (isset($username) && !empty($username)) : ?>
-        <input type="hidden" name="username" value="<?php se($username, false); ?>" />
-    <?php endif; ?>
-    <table>
-        <thead>
-            <th>Users</th>
-            <th>Roles to Assign</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <table>
-                        <?php foreach ($users as $user) : ?>
-                            <tr>
-                                <td>
-                                    <label for="user_<?php se($user, 'id'); ?>"><?php se($user, "username"); ?></label>
-                                    <input id="user_<?php se($user, 'id'); ?>" type="checkbox" name="users[]" value="<?php se($user, 'id'); ?>" />
-                                </td>
-                                <td><?php se($user, "roles", "No Roles"); ?></td>
-                            </tr>
+
+<div class="container-fluid">
+    <h2>Assign Them!</h2>
+    <form method="POST">
+        <div class="form-floating mb-3">
+            <input class="form-control" type="search" id="username" name="username" placeholder="Username search" />
+            <label for="username">Username Search</label>  
+        </div>
+        <input type="submit" value="Search" />
+    </form>
+
+    <form method="POST">
+        <?php if (isset($username) && !empty($username)) : ?>
+            <input type="hidden" name="username" value="<?php se($username, false); ?>" />
+        <?php endif; ?>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Users</th>
+                    <th scope="col">Roles to Assign</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <table>
+                            <?php foreach ($users as $user) : ?>
+                                <tr>
+                                    <td>
+                                        <label for="user_<?php se($user, 'id'); ?>"><?php se($user, "username"); ?></label>
+                                        <input id="user_<?php se($user, 'id'); ?>" type="checkbox" name="users[]" value="<?php se($user, 'id'); ?>" />
+                                    </td>
+                                    <td><?php se($user, "roles", "No Roles"); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </td>
+                    <td>
+                        <?php foreach ($active_roles as $role) : ?>
+                            <div>
+                                <label for="role_<?php se($role, 'id'); ?>"><?php se($role, "name"); ?></label>
+                                <input id="role_<?php se($role, 'id'); ?>" type="checkbox" name="roles[]" value="<?php se($role, 'id'); ?>" />
+                            </div>
                         <?php endforeach; ?>
-                    </table>
-                </td>
-                <td>
-                    <?php foreach ($active_roles as $role) : ?>
-                        <div>
-                            <label for="role_<?php se($role, 'id'); ?>"><?php se($role, "name"); ?></label>
-                            <input id="role_<?php se($role, 'id'); ?>" type="checkbox" name="roles[]" value="<?php se($role, 'id'); ?>" />
-                        </div>
-                    <?php endforeach; ?>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <input type="submit" value="Toggle Roles" />
-</form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Toggle Roles" />
+    </form>
+</div>
 <?php
 //note we need to go up 1 more directory
 require_once(__DIR__ . "/../../../partials/flash.php");
