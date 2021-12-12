@@ -148,6 +148,48 @@
 
 
 - Milestone 2
+- [x] \(3 Dec 2021) Pick a simple game to implement
+  -  List of Evidence of Feature Completion
+    - Status: Completed
+    - Direct Link: N/A
+    - Pull Requests
+      - PR link #1 N/A
+    - Issues Link
+      - Issues link #1 https://github.com/lenahxo/IT202009/issues/41
+    - Screenshots
+      - Screenshot #1 N/A
+        - Screenshot #1 N/A
+
+- [ ] \(mm/dd/yyyy of completion) The system will save the user’s score at the end of the game if the user is logged in
+  -  List of Evidence of Feature Completion
+    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Pull Requests
+      - PR link #1 (repeat as necessary)
+    - Screenshots
+      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
+        - Screenshot #1 description explaining what you're trying to show
+
+- [ ] \(mm/dd/yyyy of completion) The user will be able to see their last 10 scores
+  -  List of Evidence of Feature Completion
+    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Pull Requests
+      - PR link #1 (repeat as necessary)
+    - Screenshots
+      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
+        - Screenshot #1 description explaining what you're trying to show
+
+- [ ] \(mm/dd/yyyy of completion) Create functions that output the following scoreboards (this will be used later)
+  -  List of Evidence of Feature Completion
+    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Pull Requests
+      - PR link #1 (repeat as necessary)
+    - Screenshots
+      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
+        - Screenshot #1 description explaining what you're trying to show
+
 - Milestone 3
 - Milestone 4
 ### Intructions

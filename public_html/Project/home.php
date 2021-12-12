@@ -1,15 +1,17 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
-<h1>Home</h1>
+<div class="container-fluid">
+    <h2>What it doooo!</h2>
+</div>
 <?php
 if (is_logged_in(true)) {
-    echo "Welcome, " . get_username();
+    echo "Logged in succesfully as: " . get_username();
 } else {
     echo "You're not logged in";
 }
 //shows session info
-echo "<pre>" . var_export($_SESSION, true) . "</pre>";
+//echo "<pre>" . var_export($_SESSION, true) . "</pre>";
 ?>
 <?php
 require(__DIR__ . "/../../partials/flash.php");
