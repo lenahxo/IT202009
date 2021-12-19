@@ -90,13 +90,13 @@ $username = get_username();
 $user_id = get_user_id();
 ?>
 <div class="container-fluid">
-    <h1>Profile</h1>
+    <h2>Profile</h2>
     <div>
-        Best Score: <?php echo get_best_score($user_id); ?>
+        <h5>Best Score: </h5><?php echo get_best_score($user_id); ?>
     </div>
     <div>
         <?php $last10 = get_latest_scores($user_id); ?>
-        <h3>Your Last 10 Scores</h3>
+        <h5>Your Last 10 Scores</h5>
         <table class="table">
             <thead>
                 <th>Score</th>
