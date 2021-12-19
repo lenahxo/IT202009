@@ -209,9 +209,9 @@
       - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
         - Screenshot #1 description explaining what you're trying to show
 
-- [ ] \(mm/dd/yyyy of completion) Will need an association table CompetitionParticipants (id, comp_id, user_id, created)
+- [X] \(18 Dec 2021) Will need an association table CompetitionParticipants (id, comp_id, user_id, created)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Status: Completed
     - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
     - Pull Requests
       - PR link #1 (repeat as necessary)
