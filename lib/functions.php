@@ -134,6 +134,166 @@ function get_url($dest)
 }
 
 
+
+
+
+
+
+//save data
+function save_data($table, $data, $ignore = ["submit"])
+{
+    $table = se($table, null, null, false);
+    $db = getDB();
+    $query = "INSERT INTO $table "; //be sure you trust $table
+    //https://www.php.net/manual/en/functions.anonymous.php Example#3
+    $columns = array_filter(array_keys($data), function ($x) use ($ignore) {
+        return !in_array($x, $ignore); // $x !== "submit";
+    });
+    //arrow function uses fn and doesn't have return or { }
+    //https://www.php.net/manual/en/functions.arrow.php
+    $placeholders = array_map(fn ($x) => ":$x", $columns);
+    $query .= "(" . join(",", $columns) . ") VALUES (" . join(",", $placeholders) . ")";
+
+    $params = [];
+    foreach ($columns as $col) {
+        $params[":$col"] = $data[$col];
+    }
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute($params);
+        //https://www.php.net/manual/en/pdo.lastinsertid.php
+        //echo "Successfully added new record with id " . $db->lastInsertId();
+        return $db->lastInsertId();
+    } catch (PDOException $e) {
+        //echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
+        flash("<pre>" . var_export($e->errorInfo, true) . "</pre>");
+        return -1;
+    }
+}
+
+
+//get points
+function get_points()
+{
+    if (is_logged_in() && isset($_SESSION["user"])) {
+        return (int)se($_SESSION["user"],"points", 0, false);
+    }
+    return 0;
+}
+
+
+//adjusting points
+function point_change($points, $reason, $user_id) 
+{
+    // keep track of user transaction --> cost for making the competition
+    $query = "INSERT INTO PointsHistory (user_id, point_change, reason) VALUES (:uid, :pc, :r)"; 
+    $params[":uid"] = $user_id;
+    $params[":pc"] = ($points * -1);
+    $params[":r"] = $reason;
+
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute($params);
+        update_points($user_id);
+        return true;
+    } catch (PDOException $e) {
+        flash("Transfer error occurred: " . var_export($e->errorInfo, true), "danger");
+        error_log("Point Change error: " .  var_export($e->errorInfo, true));
+        return false;
+    }
+}
+
+
+//update balance
+function update_points()
+{
+    if (is_logged_in()) {
+        //cache account balance
+        $query = "UPDATE Users set points = (SELECT IFNULL(SUM(diff), 0) from PointsHistory WHERE src = :src) where id = :src";
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute([":src" => get_user_id()]);
+            //get_or_create_account(); //refresh session data
+        } catch (PDOException $e) {
+            flash("Error refreshing account: " . var_export($e->errorInfo, true), "danger");
+        }
+    }
+}
+
+
+//update participants
+function update_participants($comp_id)
+{
+    $db = getDB();
+    $stmt = $db->prepare("UPDATE Competitions set curr_partic = (SELECT IFNULL(COUNT(1),0) FROM Participants WHERE comp_id = :cid), 
+    curr_reward = IF(join_fee > 0, curr_reward + CEILING(join_fee * 0.5), curr_reward) WHERE id = :cid");
+    try {
+        $stmt->execute([":cid" => $comp_id]);
+        return true;
+    } catch (PDOException $e) {
+        error_log("Update competition participant error: " . var_export($e, true));
+    }
+    return false;
+}
+
+
+//add participant to competition
+function add_to_comp($comp_id, $user_id)
+{
+    $db = getDB();
+    $stmt = $db->prepare("INSERT INTO Participants (user_id, comp_id) VALUES (:uid, :cid)");
+    try {
+        $stmt->execute([":uid" => $user_id, ":cid" => $comp_id]);
+        update_participants($comp_id);
+        return true;
+    } catch (PDOException $e) {
+        error_log("Join Competition error: " . var_export($e, true));
+    }
+    return false;
+}
+
+
+//join active competition
+function join_comp($comp_id, $user_id, $cost)
+{
+    $bal = get_points($user_id);
+    if ($comp_id > 0) {
+        try {
+            $cost = (int)se($_POST, "cost", 0, false);
+            $name = se($_POST, "compName", "", false);
+            if ($bal >= $cost) {
+                if (point_change($cost, "join_comp", $user_id)) {
+                    if (add_to_comp($comp_id, $user_id)) {
+                        // if participant can join, increase the reward value by 1
+                        $db = getDB();
+                        $query = "UPDATE Competitions SET curr_reward = ISNULL(curr_reward, 0) + 1 WHERE comp_id = :cid";
+                        $stmt = $db->prepare($query);
+                        try {
+                            $stmt->execute([":cid" => $comp_id]);
+                            $stmt->fetchAll(PDO::FETCH_ASSOC);
+                            flash("Successfully joined $name", "success");
+                            return true;
+                        } catch (PDOException $e) {
+                            error_log("Join Competition error: " . var_export($e, true));
+                        }
+                    }
+                } else {
+                    flash("Failed to pay for competition", "danger");
+                }
+            } else {
+                flash("You can't afford to join this competition", "warning");
+            }
+        } catch (PDOException $e) {
+            error_log("Comp lookup error " . var_export($e, true));
+            flash("There was an error looking up the competition", "danger");
+        }
+    } else {
+        flash("Invalid competition, please try again", "danger");
+    }
+}
+  
 //saving scores
 function save_score($score, $user_id, $showFlash = false)
 {
@@ -156,6 +316,43 @@ function save_score($score, $user_id, $showFlash = false)
         flash("Error saving score: " . var_export($e->errorInfo, true), "danger");
     }
 }
+
+
+//top 10 competition scores
+function get_top_scores_for_comp($comp_id, $limit = 10)
+{
+    $db = getDB();
+    //below if a user can win more than one place
+    /*$stmt = $db->prepare(
+        "SELECT score, s.created, username, u.id as user_id FROM BGD_Scores s 
+    JOIN BGD_UserComps uc on uc.user_id = s.user_id 
+    JOIN BGD_Competitions c on c.id = uc.competition_id
+    JOIN Users u on u.id = s.user_id WHERE c.id = :cid AND s.score >= c.min_score AND s.created 
+    BETWEEN uc.created AND c.expires ORDER BY s.score desc LIMIT :limit"
+    );*/
+    //Below if a user can't win more than one place
+    $stmt = $db->prepare("SELECT * FROM (SELECT s.user_id, s.score,s.created, a.id as account_id, DENSE_RANK() OVER (PARTITION BY s.user_id ORDER BY s.score desc) as `rank` FROM SCORES s
+    JOIN Participants uc on uc.user_id = s.user_id
+    JOIN Competitions c on uc.comp_id = c.id
+    JOIN Users a on a.user_id = s.user_id
+    WHERE c.id = :cid AND s.created BETWEEN uc.created AND c.expires
+    )as t where `rank` = 1 ORDER BY score desc LIMIT :limit");
+    $scores = [];
+    try {
+        $stmt->bindValue(":cid", $comp_id, PDO::PARAM_INT);
+        $stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($r) {
+            $scores = $r;
+        }
+    } catch (PDOException $e) {
+        flash("There was a problem fetching scores, please try again later", "danger");
+        error_log("List competition scores error: " . var_export($e, true));
+    }
+    return $scores;
+}
+
 
 //best score
 function get_best_score($user_id)
@@ -230,4 +427,47 @@ function get_top_10($duration = "day")
         error_log("Error fetching scores for $d: " . var_export($e->errorInfo, true));
     }
     return $results;
+}
+
+
+
+//updates or inserts page into query string while persisting anything already present
+function persistQueryString($page)
+{
+    $_GET["page"] = $page;
+    return http_build_query($_GET);
+}
+
+
+
+/**
+ * @param $query must have a column called "total"
+ * @param array $params
+ * @param int $per_page
+ */
+function paginate($query, $params = [], $per_page = 10)
+{
+    global $page; //will be available after function is called
+    try {
+        $page = (int)se($_GET, "page", 1, false);
+    } catch (Exception $e) {
+        //safety for if page is received as not a number
+        $page = 1;
+    }
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute($params);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("paginate error: " . var_export($e, true));
+    }
+    $total = 0;
+    if (isset($result)) {
+        $total = (int)se($result, "total", 0, false);
+    }
+    global $total_pages; //will be available after function is called
+    $total_pages = ceil($total / $per_page);
+    global $offset; //will be available after function is called
+    $offset = ($page - 1) * $per_page;
 }
