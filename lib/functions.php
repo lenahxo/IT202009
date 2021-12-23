@@ -134,6 +134,121 @@ function get_url($dest)
 }
 
 
+
+//save data
+function save_data($table, $data, $ignore = ["submit"])
+{
+    $table = se($table, null, null, false);
+    $db = getDB();
+    $query = "INSERT INTO $table "; //be sure you trust $table
+    //https://www.php.net/manual/en/functions.anonymous.php Example#3
+    $columns = array_filter(array_keys($data), function ($x) use ($ignore) {
+        return !in_array($x, $ignore); // $x !== "submit";
+    });
+    //arrow function uses fn and doesn't have return or { }
+    //https://www.php.net/manual/en/functions.arrow.php
+    $placeholders = array_map(fn ($x) => ":$x", $columns);
+    $query .= "(" . join(",", $columns) . ") VALUES (" . join(",", $placeholders) . ")";
+
+    $params = [];
+    foreach ($columns as $col) {
+        $params[":$col"] = $data[$col];
+    }
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute($params);
+        //https://www.php.net/manual/en/pdo.lastinsertid.php
+        //echo "Successfully added new record with id " . $db->lastInsertId();
+        return $db->lastInsertId();
+    } catch (PDOException $e) {
+        //echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
+        flash("<pre>" . var_export($e->errorInfo, true) . "</pre>");
+        return -1;
+    }
+}
+
+
+//get points
+function get_points()
+{
+    if (is_logged_in() && isset($_SESSION["user"]["account"])) {
+        return (int)se($_SESSION["user"]["points"]);
+    }
+    return 0;
+}
+
+
+//update participants
+function update_participants($comp_id)
+{
+    $db = getDB();
+    $stmt = $db->prepare("UPDATE Competitions set curr_partic = (SELECT IFNULL(COUNT(1),0) FROM Participants WHERE comp_id = :cid), 
+    curr_reward = IF(join_fee > 0, curr_reward + CEILING(join_fee * 0.5), curr_reward) WHERE id = :cid");
+    try {
+        $stmt->execute([":cid" => $comp_id]);
+        return true;
+    } catch (PDOException $e) {
+        error_log("Update competition participant error: " . var_export($e, true));
+    }
+    return false;
+}
+
+
+//add participant to competition
+function add_to_comp($comp_id, $user_id)
+{
+    $db = getDB();
+    $stmt = $db->prepare("INSERT INTO Participants (user_id, comp_id) VALUES (:uid, :cid)");
+    try {
+        $stmt->execute([":uid" => $user_id, ":cid" => $comp_id]);
+        update_participants($comp_id);
+        return true;
+    } catch (PDOException $e) {
+        error_log("Join Competition error: " . var_export($e, true));
+    }
+    return false;
+}
+
+
+//join active competition
+function join_comp($comp_id, $user_id, $cost)
+{
+    $bal = get_points($user_id);
+    if ($comp_id > 0) {
+        try {
+            $cost = (int)se($_POST, "cost", 0, false);
+            $name = se($_POST, "comp_name", "", false);
+            if ($bal >= $cost) {
+                if (point_change($cost, "join_comp", $user_id)) {
+                    if (add_to_comp($comp_id, $user_id)) {
+                        // if participant can join, increase the reward value by 1
+                        $db = getDB();
+                        $query = "UPDATE Competitions SET curr_reward = ISNULL(curr_reward, 0) + 1 WHERE comp_id = :cid";
+                        $stmt = $db->prepare($query);
+                        try {
+                            $stmt->execute([":cid" => $comp_id]);
+                            $stmt->fetchAll(PDO::FETCH_ASSOC);
+                            flash("Successfully joined $name", "success");
+                            return true;
+                        } catch (PDOException $e) {
+                            error_log("Join Competition error: " . var_export($e, true));
+                        }
+                    }
+                } else {
+                    flash("Failed to pay for competition", "danger");
+                }
+            } else {
+                flash("You can't afford to join this competition", "warning");
+            }
+        } catch (PDOException $e) {
+            error_log("Comp lookup error " . var_export($e, true));
+            flash("There was an error looking up the competition", "danger");
+        }
+    } else {
+        flash("Invalid competition, please try again", "danger");
+    }
+
+  
 //saving scores
 function save_score($score, $user_id, $showFlash = false)
 {
