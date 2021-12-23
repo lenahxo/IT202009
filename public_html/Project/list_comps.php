@@ -6,19 +6,24 @@ $db = getDB();
 if (isset($_POST["join"])) {
     $user_id = get_user_id();
     $comp_id = se($_POST, "comp_id", 0, false);
-    $cost = se($_POST, "join_cost", 0, false);
+    $cost = se($_POST, "join_fee", 0, false);
     $balance = get_points();
     join_comp($comp_id, $user_id, $cost);
 }
 $per_page = 5;
 paginate("SELECT count(1) as total FROM Competitions WHERE expires > current_timestamp() AND paid_out < 1");
-//handle page load
+
 //TODO fix join
-$stmt = $db->prepare("SELECT Competitions.id, compName, min_partic, curr_partic, curr_reward, expires, user_id, min_score, join_fee, IF(comp_id is null, 0, 1) as joined,  CONCAT(first_place,'% - ', second_place, '% - ', third_place, '%') as place FROM Competitions
-JOIN (SELECT * FROM Participants WHERE user_id = :uid) as uc ON uc.comp_id = Competitions.id WHERE expires > current_timestamp() AND paid_out < 1 ORDER BY expires desc");
-/*$stmt = $db->prepare("SELECT BGD_Competitions.id, title, min_participants, current_participants, current_reward, expires, creator_id, min_score, join_cost, IF(competition_id is null, 0, 1) as joined,  CONCAT(first_place,'% - ', second_place, '% - ', third_place, '%') as place FROM BGD_Competitions
-JOIN BGD_Payout_Options on BGD_Payout_Options.id = BGD_Competitions.payout_option
-LEFT JOIN BGD_UserComps on BGD_UserComps.competition_id = BGD_Competitions.id WHERE user_id = :uid AND expires > current_timestamp() AND did_payout < 1 AND did_calc < 1 ORDER BY expires desc");*/
+$stmt = $db->prepare("SELECT c.* FROM Competitions c
+LEFT JOIN (SELECT * FROM Participants cp WHERE cp.user_id = :uid) as t ON t.comp_id = c.id
+WHERE paid_out = 0 AND expires > current_timestamp() ORDER BY expires desc");
+
+    
+/*"SELECT Competitions.id, compName, min_partic, curr_partic, curr_reward, expires, user_id, min_score, join_fee, 
+IF(comp_id is null, 0, 1) as joined,  CONCAT(first_place,'% - ', second_place, '% - ', third_place, '%') as place FROM Competitions
+LEFT JOIN (SELECT * FROM Participants WHERE user_id = :uid) as uc ON uc.comp_id = Competitions.id WHERE expires > current_timestamp() AND paid_out < 1 ORDER BY expires desc"
+*/
+
 $results = [];
 try {
     $stmt->execute([":uid" => get_user_id()]);
@@ -36,7 +41,7 @@ try {
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Title</th>
+                <th scope="col">Name</th>
                 <th scope="col">Participants</th>
                 <th scope="col">Reward</th>
                 <th scope="col">Min Score</th>
@@ -55,15 +60,15 @@ try {
                         <td><?php se($row, "expires", "-"); ?></td>
                         <td>
                             <?php if (se($row, "joined", 0, false)) : ?>
-                                <button class="btn btn-primary disabled" onclick="event.preventDefault()" disabled>Already Joined</button>
+                                <button class="btn btn-outline-secondary btn-sm disabled" onclick="event.preventDefault()" disabled>Already Joined</button>
                             <?php else : ?>
                                 <form method="POST">
                                     <input type="hidden" name="comp_id" value="<?php se($row, 'id'); ?>" />
                                     <input type="hidden" name="cost" value="<?php se($row, 'join_fee', 0); ?>" />
-                                    <input type="submit" name="join" class="btn btn-primary" value="Join (Cost: <?php se($row, "join_fee", 0) ?>)" />
+                                    <input type="submit" name="join" class="btn btn-outline-secondary btn-sm" value="Join (Cost: <?php se($row, "join_fee", 0) ?>)" />
                                 </form>
                             <?php endif; ?>
-                            <a class="btn btn-secondary" href="view_competition.php?id=<?php se($row, 'id'); ?>">View</a>
+                            <a class="btn btn-outline-secondary btn-sm" href="view_comps.php?id=<?php se($row, 'id'); ?>">View</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -77,5 +82,5 @@ try {
     <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
 </div>
 <?php
-//require(__DIR__ . "/../../partials/footer.php");
+require_once(__DIR__ . "/../../partials/flash.php");
 ?>
