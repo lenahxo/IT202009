@@ -175,8 +175,8 @@ function save_data($table, $data, $ignore = ["submit"])
 //get points
 function get_points()
 {
-    if (is_logged_in() && isset($_SESSION["user"]["account"])) {
-        return (int)se($_SESSION["user"]["points"]);
+    if (is_logged_in() && isset($_SESSION["user"])) {
+        return (int)se($_SESSION["user"],"points", 0, false);
     }
     return 0;
 }
@@ -390,6 +390,15 @@ function get_top_10($duration = "day")
         error_log("Error fetching scores for $d: " . var_export($e->errorInfo, true));
     }
     return $results;
+}
+
+
+
+//updates or inserts page into query string while persisting anything already present
+function persistQueryString($page)
+{
+    $_GET["page"] = $page;
+    return http_build_query($_GET);
 }
 
 
