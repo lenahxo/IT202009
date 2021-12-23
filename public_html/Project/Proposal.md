@@ -295,9 +295,9 @@
 
 
 - Milestone 4
-- [ ] \(mm/dd/yyyy of completion) User can set their profile to be public or private
+- [X] \(23 Dec 2021) User can set their profile to be public or private
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Status: Completed
     - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
     - Pull Requests
       - PR link #1 (repeat as necessary)
@@ -325,9 +325,9 @@
       - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
         - Screenshot #1 description explaining what you're trying to show
 
-- [ ] \(mm/dd/yyyy of completion) Add pagination to the Active Competitions view
+- [X] \(22 Dec 2021) Add pagination to the Active Competitions view
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Status: Completed
     - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
     - Pull Requests
       - PR link #1 (repeat as necessary)
@@ -355,9 +355,9 @@
       - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
         - Screenshot #1 description explaining what you're trying to show
 
-- [ ] \(mm/dd/yyyy of completion) Game should be fully implemented/complete by this point
+- [X] \(23 Dec 2021) Game should be fully implemented/complete by this point
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Status: Completed
     - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
     - Pull Requests
       - PR link #1 (repeat as necessary)

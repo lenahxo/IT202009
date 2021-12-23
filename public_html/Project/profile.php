@@ -165,6 +165,7 @@ try {
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
     </div>
 
     <?php if (!$edit) : ?>
