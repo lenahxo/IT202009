@@ -15,7 +15,7 @@ paginate("SELECT count(1) as total FROM Competitions WHERE expires > current_tim
 //handle page load
 //TODO fix join
 $stmt = $db->prepare("SELECT Competitions.id, compName, min_partic, curr_partic, curr_reward, expires, user_id, min_score, join_fee, IF(comp_id is null, 0, 1) as joined,  CONCAT(first_place,'% - ', second_place, '% - ', third_place, '%') as place FROM Competitions
-LEFT JOIN (SELECT * FROM Participants WHERE user_id = :uid) as uc ON uc.comp_id = Competitions.id WHERE expires > current_timestamp() AND paid_out < 1 ORDER BY expires desc");
+JOIN (SELECT * FROM Participants WHERE user_id = :uid) as uc ON uc.comp_id = Competitions.id WHERE expires > current_timestamp() AND paid_out < 1 ORDER BY expires desc");
 /*$stmt = $db->prepare("SELECT BGD_Competitions.id, title, min_participants, current_participants, current_reward, expires, creator_id, min_score, join_cost, IF(competition_id is null, 0, 1) as joined,  CONCAT(first_place,'% - ', second_place, '% - ', third_place, '%') as place FROM BGD_Competitions
 JOIN BGD_Payout_Options on BGD_Payout_Options.id = BGD_Competitions.payout_option
 LEFT JOIN BGD_UserComps on BGD_UserComps.competition_id = BGD_Competitions.id WHERE user_id = :uid AND expires > current_timestamp() AND did_payout < 1 AND did_calc < 1 ORDER BY expires desc");*/
@@ -32,15 +32,17 @@ try {
 }
 ?>
 <div class="container-fluid">
-    <h1>List Competitions</h1>
-    <table class="table text-light">
+    <h2>Thee Competitions</h2>
+    <table class="table">
         <thead>
-            <th>Title</th>
-            <th>Participants</th>
-            <th>Reward</th>
-            <th>Min Score</th>
-            <th>Expires</th>
-            <th>Actions</th>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Participants</th>
+                <th scope="col">Reward</th>
+                <th scope="col">Min Score</th>
+                <th scope="col">Expires</th>
+                <th scope="col">Actions</th>
+            </tr>
         </thead>
         <tbody>
             <?php if (count($results) > 0) : ?>
