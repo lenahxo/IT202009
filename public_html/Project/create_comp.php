@@ -79,62 +79,49 @@ then $comp_id = $db->lastInsertId(); --> from save_data() function
 ?>
 
 <div class="container-fluid">
-    <h1>Create Competition</h1>
+    <h2>Make your competition!</h2>
     <form method="POST">
-        <div class="mb-3">
-            <label for="comp_name" class="form-label">Name</label>
-            <input id="comp_name" name="comp_name" class="form-control" />
+        <div class="form-floating mb-3">
+            <input id="cName" name="compName" class="form-control" type="text" placeholder="name"/>
+            <label for="compName">Competition Name</label>
         </div>
-        <div class="mb-3">
-            <label for="reward" class="form-label">Starting Reward</label>
-            <input id="reward" type="number" name="starting_reward" class="form-control" onchange="updateCost()" placeholder=">= 1" min="1" />
+        <div class="form-floating mb-3">
+            <input id="reward" type="number" name="start_reward" class="form-control" onchange="updateCost()" placeholder="Value 1 or greater" min="1" />
+            <label for="reward">Starting Reward</label>
         </div>
-        <div class="mb-3">
-            <label for="ms" class="form-label">Min. Score</label>
-            <input id="ms" name="min_score" type="number" class="form-control" placeholder=">= 1" min="1" />
+        <div class="form-floating mb-3">
+            <input id="ms" name="min_score" type="number" class="form-control" placeholder="Value 1 or greater" min="1" />
+            <label for="ms">Minimum Score</label>
         </div>
-        <div class="mb-3">
-            <label for="mp" class="form-label">Min. Participants</label>
-            <input id="mp" name="min_participants" type="number" class="form-control" placeholder=">= 3" min="3" />
+        <div class="form-floating mb-3">
+            <input id="mp" name="min_partic" type="number" class="form-control" placeholder="Value 3 or greater" min="3" />
+            <label for="mp">Minimum Participants</label>
         </div>
-        <div class="mb-3">
-            <label for="jc" class="form-label">Join Fee</label>
-            <input id="jc" name="join_fee" type="number" class="form-control" onchange="updateCost()" placeholder=">= 0" min="0" />
+        <div class="form-floating mb-3">
+            <input id="jc" name="join_fee" type="number" class="form-control" onchange="updateCost()" placeholder="Value 0 or greater" min="0" />
+            <label for="jc" class="form-label">Joining Fee</label>
         </div>
-        <div class="mb-3">
-            <label for="duration" class="form-label">Duration (in Days)</label>
-            <input id="duration" name="duration" type="number" class="form-control" placeholder=">= 3" min="3" />
+        <div class="form-floating mb-3">
+            <input id="duration" name="duration" type="number" class="form-control" placeholder="Value 3 or greater" min="3" />
+            <label for="duration">Duration (days)</label>
         </div>
         <!-- Payout for 1st place -->
-        <div class="mb-3">
-            <label for="fp" class="form-label">1st Place Payout</label>
-            <input id="fp" name="first_place_per" type="number" class="form-control" placeholder="Enter percentage (%)"/>
+        <div class="form-floating mb-3">
+            <input id="fp" name="first_place" type="number" class="form-control" placeholder="Enter percentage (%)"/>
+            <label for="fp">1st Place Prize</label>
         </div>
         <!-- Payout for 2nd place -->
-        <div class="mb-3">
-            <label for="sp" class="form-label">2nd Place Payout</label>
-            <input id="sp" name="second_place_per" type="number" class="form-control" placeholder="Enter percentage (%)"/>
+        <div class="form-floating mb-3">
+            <input id="sp" name="second_place" type="number" class="form-control" placeholder="Enter percentage (%)"/>
+            <label for="fp">2nd Place Prize</label>
         </div>
         <!-- Payout for 3rd place -->
-        <div class="mb-3">
-            <label for="tp" class="form-label">3rd Place Payout</label>
-            <input id="tp" name="third_place_per" type="number" class="form-control" placeholder="Enter percentage (%)"/>
+        <div class="form-floating mb-3">
+            <input id="tp" name="third_place" type="number" class="form-control" placeholder="Enter percentage (%)"/>
+            <label for="fp">3rd Place Prize</label>
         </div>
-        <!-- <div class="mb-3">
-            <label for="po" class="form-label">Payout Option (1st, 2nd, 3rd)</label>
-            <select id="po" name="payout_option" class="form-control">
-                <option value="1">60%, 30%, 10%</option>
-                <option value="2">70%, 20%, 10%</option>
-                <option value="3">80%, 20%, 0%</option>
-                <option value="4">75%, 20%, 5%</option>
-                <option value="5">65%, 25%, 10%</option>
-                <option value="6">80%, 10%, 10%</option>
-                <option value="7">75%, 15%, 10%</option>
-                <option value="8">50%, 30%, 20%</option>
-            </select>
-        </div> -->
-        <div class="mb-3">
-            <input type="submit" value="Create Competition (Cost: 2)" class="btn btn-primary" />
+        <div class="form-floating mb-3">
+            <input type="submit" value="Create Competition" class="btn btn-outline-secondary btn-sm" />
         </div>
     </form>
     <script>

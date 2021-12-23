@@ -135,6 +135,10 @@ function get_url($dest)
 
 
 
+
+
+
+
 //save data
 function save_data($table, $data, $ignore = ["submit"])
 {
@@ -175,6 +179,47 @@ function get_points()
         return (int)se($_SESSION["user"]["points"]);
     }
     return 0;
+}
+
+
+//adjusting points
+function point_change($points, $reason, $user_id) 
+{
+    // keep track of user transaction --> cost for making the competition
+    $query = "INSERT INTO PointsHistory (user_id, point_change, reason) VALUES (:uid, :pc, :r)"; 
+    $params[":uid"] = $user_id;
+    $params[":pc"] = ($points * -1);
+    $params[":r"] = $reason;
+
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute($params);
+        update_balance($user_id);
+        return true;
+    } catch (PDOException $e) {
+        flash("Transfer error occurred: " . var_export($e->errorInfo, true), "danger");
+        error_log("Point Change error: " .  var_export($e->errorInfo, true));
+        return false;
+    }
+}
+
+
+//update balance
+function update_balance()
+{
+    if (is_logged_in()) {
+        //cache account balance
+        $query = "UPDATE Users set balance = (SELECT IFNULL(SUM(diff), 0) from PointsHistory WHERE src = :src) where id = :src";
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute([":src" => get_user_id()]);
+            //get_or_create_account(); //refresh session data
+        } catch (PDOException $e) {
+            flash("Error refreshing account: " . var_export($e->errorInfo, true), "danger");
+        }
+    }
 }
 
 
@@ -247,7 +292,7 @@ function join_comp($comp_id, $user_id, $cost)
     } else {
         flash("Invalid competition, please try again", "danger");
     }
-
+}
   
 //saving scores
 function save_score($score, $user_id, $showFlash = false)
