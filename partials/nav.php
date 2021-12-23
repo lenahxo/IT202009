@@ -42,8 +42,16 @@ require_once(__DIR__ . "/../lib/functions.php");
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('home.php'); ?>">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('profile.php'); ?>">Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('game.php'); ?>">GAME</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?php echo get_url('create_comp.php'); ?>">Create Comp</a></li>
-                <?php endif; ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="compDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Competitions
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="rolesDropdown">
+                            <li><a class="dropdown-item" href="<?php echo get_url('create_comp.php'); ?>">Create</a></li>
+                            <li><a class="dropdown-item" href="<?php echo get_url('list_comps.php'); ?>">List</a></li>
+                        </ul>
+                    </li>
+                    <?php endif; ?>
                 <?php if (!is_logged_in()) : ?>
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('login.php'); ?>">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('register.php'); ?>">Register</a></li>
