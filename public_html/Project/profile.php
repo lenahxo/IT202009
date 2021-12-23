@@ -85,32 +85,64 @@ if (isset($_POST["save"])) {
 <?php
 $email = get_user_email();
 $username = get_username();
+
+//user can see scores
+$user_id = get_user_id();
 ?>
-<form method="POST" onsubmit="return validate(this);">
-    <div class="mb-3">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="<?php se($email); ?>" />
+<div class="container-fluid">
+    <h2>Profile</h2>
+    <div>
+        <h5>Points: </h5><?php echo get_points(); ?>
+        <h5>Best Score: </h5><?php echo get_best_score($user_id); ?>
     </div>
-    <div class="mb-3">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" value="<?php se($username); ?>" />
+    <div>
+        <?php $last10 = get_latest_scores($user_id); ?>
+        <h5>Your Last 10 Scores</h5>
+        <table class="table">
+            <thead>
+                <th>Score</th>
+                <th>Time</th>
+            </thead>
+            <tbody>
+
+                <!-- add no score message like in list_roles.php --> 
+                
+                <?php foreach ($last10 as $score) : ?>
+                    <tr>
+                        <td><?php se($score, "score", 0); ?></td>
+                        <td><?php se($score, "created", "-"); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
-    <!-- DO NOT PRELOAD PASSWORD -->
-    <div>Password Reset</div>
-    <div class="mb-3">
-        <label for="cp">Current Password</label>
-        <input type="password" name="currentPassword" id="cp" />
-    </div>
-    <div class="mb-3">
-        <label for="np">New Password</label>
-        <input type="password" name="newPassword" id="np" />
-    </div>
-    <div class="mb-3">
-        <label for="conp">Confirm Password</label>
-        <input type="password" name="confirmPassword" id="conp" />
-    </div>
-    <input type="submit" value="Update Profile" name="save" />
-</form>
+    <h2>What we updating!?</h2>
+    <form method="POST" onsubmit="return validate(this);">
+        <div class="form-floating mb-3">
+            <input class="form-control" type="email" name="email" id="email" value="<?php se($email); ?>" />
+            <label for="email">Email</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" name="username" id="username" value="<?php se($username); ?>" />
+            <label for="username">Username</label>
+        </div>
+        <!-- DO NOT PRELOAD PASSWORD -->
+        <h6>Password Reset</h6>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="password" name="currentPassword" id="cp" placeholder="current_pw"/>
+            <label for="cp">Current Password</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="password" name="newPassword" id="np" placeholder="new_pw"/>
+            <label for="np">New Password</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="password" name="confirmPassword" id="conp" placeholder="confirm_pw" />
+            <label for="conp">Confirm Password</label>
+        </div>
+        <input type="submit" class="btn btn-outline-secondary btn-sm" value="Update Profile" name="save" />
+    </form>
+</div>
 
 <script>
     function validate(form) {
