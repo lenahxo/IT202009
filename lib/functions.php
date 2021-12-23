@@ -136,7 +136,20 @@ function get_url($dest)
 
 
 
-
+function redirect($path)
+{ //header headache
+    //https://www.php.net/manual/en/function.headers-sent.php#90160
+    /*headers are sent at the end of script execution otherwise they are sent when the buffer reaches it's limit and emptied */
+    if (!headers_sent()) {
+        //php redirect
+        die(header("Location: " . get_url($path)));
+    }
+    //javascript redirect
+    echo "<script>window.location.href='" . get_url($path) . "';</script>";
+    //metadata redirect (runs if javascript is disabled)
+    echo "<noscript><meta http-equiv=\"refresh\" content=\"0;url=" . get_url($path) . "\"/></noscript>";
+    die();
+}
 
 
 //save data
@@ -186,7 +199,7 @@ function get_points()
 function point_change($points, $reason, $user_id) 
 {
     // keep track of user transaction --> cost for making the competition
-    $query = "INSERT INTO PointsHistory (user_id, point_change, reason) VALUES (:uid, :pc, :r)"; 
+    $query = "INSERT INTO PointsHistory (user_id, points_change, reason) VALUES (:uid, :pc, :r)"; 
     $params[":uid"] = $user_id;
     $params[":pc"] = ($points * -1);
     $params[":r"] = $reason;
@@ -210,11 +223,11 @@ function update_points()
 {
     if (is_logged_in()) {
         //cache account balance
-        $query = "UPDATE Users set points = (SELECT IFNULL(SUM(diff), 0) from PointsHistory WHERE src = :src) where id = :src";
+        $query = "UPDATE Users set points = (SELECT IFNULL(SUM(points_change), 0) from PointsHistory WHERE user_id = :uid) where id = :uid";
         $db = getDB();
         $stmt = $db->prepare($query);
         try {
-            $stmt->execute([":src" => get_user_id()]);
+            $stmt->execute([":uid" => get_user_id()]);
             //get_or_create_account(); //refresh session data
         } catch (PDOException $e) {
             flash("Error refreshing account: " . var_export($e->errorInfo, true), "danger");
