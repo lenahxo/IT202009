@@ -196,90 +196,95 @@
       - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/145698507-530a7777-f2c4-4d7a-8140-8324660124c1.png)
         - Screenshot #1 Code for top 10 weekly, monthly, and lifetime scores
 
+
+
 - Milestone 3
 - [X] \(18 Dec 2021) Users will have points associated with their account
   -  List of Evidence of Feature Completion
     - Status: Completed
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/78
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147193236-04a372a1-d3a3-4882-9d9b-ba02a71b8c81.png)
+        - Screenshot #1 Points displayed on user profile
+      - Screenshot #2 ![image](https://user-images.githubusercontent.com/56138268/147193719-d3260f89-0e9c-4cad-9539-d3dde8d54f81.png)
+        - Screenshot #2 Points added to table
 
 - [X] \(18 Dec 2021) Create a PointsHistory table (id, user_id, point_change, reason, created)
   -  List of Evidence of Feature Completion
     - Status: Completed
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: N/A
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/78
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147194096-55914575-f58b-4d57-af06-5ab62d4fd213.png)
+        - Screenshot #1 PointsHistory Table
 
 - [X] \(18 Dec 2021) Competitions table should have the following columns 
   -  List of Evidence of Feature Completion
     - Status: Completed
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: N/A
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/78
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147194534-9c54822d-a973-445c-91c3-3240c1dd9afd.png)
+      - Screenshot #2 ![image](https://user-images.githubusercontent.com/56138268/147194469-f3c171f5-391a-480a-a3f9-2eb4e42dd930.png)
+        - Screenshot #1 Competitions Table
 
 - [X] \(22 Dec 2021) User will be able to create a competition
   -  List of Evidence of Feature Completion
-    - Status: Partially Working (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/create_comp.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/81
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147195172-156343ef-2d29-4ca8-9629-62bfc35d66dd.png)
+        - Screenshot #1 User can create a competition
 
-- [ ] \(mm/dd/yyyy of completion) Each new participant causes the Reward value to increase by at least 1 or 50% of the joining fee rounded up
+- [X] \(22 Dec 2021) Each new participant causes the Reward value to increase by at least 1 or 50% of the joining fee rounded up
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: N/A
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/79
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147195595-2064c498-74aa-404f-8b4b-6a9f9191e67d.png)
+        - Screenshot #1 Each new participant causes reward to increase by 1 (server side)
 
-- [ ] \(mm/dd/yyyy of completion) Have a page where the User can see active competitions (not expired)
+- [X] \(22 Dec 2021) Have a page where the User can see active competitions (not expired)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/list_comps.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/81
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147196094-7bdf8c01-0799-469e-a233-663652268a16.png)
+        - Screenshot #1 User can view a list of active competitions
 
 - [X] \(18 Dec 2021) Will need an association table CompetitionParticipants (id, comp_id, user_id, created)
   -  List of Evidence of Feature Completion
     - Status: Completed
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: N/A
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/78
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147196369-9a3012a4-a7e7-4e01-8158-a4bbc0710c68.png)
+        - Screenshot #1 Competition Participant Table (server side)
 
-- [ ] \(mm/dd/yyyy of completion) User can join active competitions
+- [X] \(22 Dec 2021) User can join active competitions
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: N/A
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/80
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147196622-200334b1-37e1-48b5-988a-d6ef047a3611.png)
+        - Screenshot #1 User can join active competitions
 
 - [ ] \(mm/dd/yyyy of completion) Create function that calculates competition winners
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Status: INCOMPLETE
     - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
     - Pull Requests
       - PR link #1 (repeat as necessary)

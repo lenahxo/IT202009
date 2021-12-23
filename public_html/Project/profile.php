@@ -92,7 +92,7 @@ $user_id = get_user_id();
 <div class="container-fluid">
     <h2>Profile</h2>
     <div>
-        <h5>Poins: </h5><?php echo get_points(); ?>
+        <h5>Points: </h5><?php echo get_points(); ?>
         <h5>Best Score: </h5><?php echo get_best_score($user_id); ?>
     </div>
     <div>
