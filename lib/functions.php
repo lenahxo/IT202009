@@ -135,6 +135,10 @@ function get_url($dest)
 
 
 
+
+
+
+
 //save data
 function save_data($table, $data, $ignore = ["submit"])
 {
@@ -171,10 +175,51 @@ function save_data($table, $data, $ignore = ["submit"])
 //get points
 function get_points()
 {
-    if (is_logged_in() && isset($_SESSION["user"]["account"])) {
-        return (int)se($_SESSION["user"]["points"]);
+    if (is_logged_in() && isset($_SESSION["user"])) {
+        return (int)se($_SESSION["user"],"points", 0, false);
     }
     return 0;
+}
+
+
+//adjusting points
+function point_change($points, $reason, $user_id) 
+{
+    // keep track of user transaction --> cost for making the competition
+    $query = "INSERT INTO PointsHistory (user_id, point_change, reason) VALUES (:uid, :pc, :r)"; 
+    $params[":uid"] = $user_id;
+    $params[":pc"] = ($points * -1);
+    $params[":r"] = $reason;
+
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute($params);
+        update_points($user_id);
+        return true;
+    } catch (PDOException $e) {
+        flash("Transfer error occurred: " . var_export($e->errorInfo, true), "danger");
+        error_log("Point Change error: " .  var_export($e->errorInfo, true));
+        return false;
+    }
+}
+
+
+//update balance
+function update_points()
+{
+    if (is_logged_in()) {
+        //cache account balance
+        $query = "UPDATE Users set points = (SELECT IFNULL(SUM(diff), 0) from PointsHistory WHERE src = :src) where id = :src";
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute([":src" => get_user_id()]);
+            //get_or_create_account(); //refresh session data
+        } catch (PDOException $e) {
+            flash("Error refreshing account: " . var_export($e->errorInfo, true), "danger");
+        }
+    }
 }
 
 
@@ -247,7 +292,7 @@ function join_comp($comp_id, $user_id, $cost)
     } else {
         flash("Invalid competition, please try again", "danger");
     }
-
+}
   
 //saving scores
 function save_score($score, $user_id, $showFlash = false)
@@ -345,4 +390,47 @@ function get_top_10($duration = "day")
         error_log("Error fetching scores for $d: " . var_export($e->errorInfo, true));
     }
     return $results;
+}
+
+
+
+//updates or inserts page into query string while persisting anything already present
+function persistQueryString($page)
+{
+    $_GET["page"] = $page;
+    return http_build_query($_GET);
+}
+
+
+
+/**
+ * @param $query must have a column called "total"
+ * @param array $params
+ * @param int $per_page
+ */
+function paginate($query, $params = [], $per_page = 10)
+{
+    global $page; //will be available after function is called
+    try {
+        $page = (int)se($_GET, "page", 1, false);
+    } catch (Exception $e) {
+        //safety for if page is received as not a number
+        $page = 1;
+    }
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute($params);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("paginate error: " . var_export($e, true));
+    }
+    $total = 0;
+    if (isset($result)) {
+        $total = (int)se($result, "total", 0, false);
+    }
+    global $total_pages; //will be available after function is called
+    $total_pages = ceil($total / $per_page);
+    global $offset; //will be available after function is called
+    $offset = ($page - 1) * $per_page;
 }
