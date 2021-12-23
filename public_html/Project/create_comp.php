@@ -40,7 +40,7 @@ if (isset($_POST["compName"]) && !empty($_POST["compName"])) {
             // deduct points
 
             //-->if (point_change($cost, "create_comp", get_user_id())) {
-                $_POST["creator_id"] = get_user_id();
+                $_POST["user_id"] = get_user_id();
                 // store competition info, then add it to Competitions table
                 $id = save_data("Competitions", $_POST);
                 // 
