@@ -12,7 +12,7 @@ if (isset($_POST["join"])) {
 $id = se($_GET, "id", -1, false);
 if ($id < 1) {
     flash("Invalid competition", "danger");
-    redirect("list_competitions.php");
+    redirect("list_comps.php");
 }
 //handle page load
 $stmt = $db->prepare("SELECT c.* FROM Competitions c
@@ -72,7 +72,7 @@ $scores = get_top_scores_for_comp($id);
     <?php
     //$scores is defined above
     $title = $comp . " Top Scores";
-    include(__DIR__ . "/../../partials/score_table.php");
+    include(__DIR__ . "/../../partials/top10_table.php");
     ?>
 </div>
 <?php
