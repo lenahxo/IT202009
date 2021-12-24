@@ -345,7 +345,7 @@ require(__DIR__ . "/../../partials/nav.php");
 </script>
 
 
-<!--Styling for game-->else
+<!--Styling for game-->
 <style>
 
 .game

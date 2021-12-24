@@ -30,7 +30,7 @@ nav
     background-color: rgb(142, 116, 255);
 }
 
-nav li
+nav ul li
 {
     display: inline-block;
     padding: 14px 16px;
