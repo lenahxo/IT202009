@@ -298,42 +298,42 @@
 - [X] \(23 Dec 2021) User can set their profile to be public or private
   -  List of Evidence of Feature Completion
     - Status: Completed
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/profile.php?edit=true
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/91
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147313445-d95c5b30-0136-4d49-a344-b513ea625eba.png)
+        - Screenshot #1 User can set their profile to public or private (server side: visibility)
 
 - [X] \(23 Dec 2021) User will be able to see their competition history
   -  List of Evidence of Feature Completion
     - Status: Completed
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/comp_history.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/91
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147313695-b6e0e45e-3b7d-47ad-94ac-0ce75c5338d8.png)
+        - Screenshot #1 User can see competition history
 
 - [/] \(23 Dec 2021) User with the role of “admin” can edit a competition where paid_out = false
   -  List of Evidence of Feature Completion
     - Status: Partially working
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/admin/edit_comp.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/91
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147314279-d8ab60a7-88cc-432b-8aa4-e708eeb7ee2e.png)
+        - Screenshot #1 Admin users can edit competition entry values
 
 - [X] \(22 Dec 2021) Add pagination to the Active Competitions view
   -  List of Evidence of Feature Completion
     - Status: Completed
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/list_comps.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/81
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147313255-0da20f14-1a95-4441-a296-21d6badd178f.png)
+        - Screenshot #1 Pagination added to active competition view
 
 - [ ] \(mm/dd/yyyy of completion) Anywhere a username is displayed should be a link to that user’s profile
   -  List of Evidence of Feature Completion
@@ -348,42 +348,42 @@
 - [X] \(23 Dec 2021) Viewing an active or expired competition should show the top 10 scoreboard related to that competition
   -  List of Evidence of Feature Completion
     - Status: Completed
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/view_comps.php?id=3
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/91
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147314537-aed23e28-0d3c-48c1-8cfd-588362fff0ba.png)
+        - Screenshot #1 Top 10 scoreboard related to competition displayed
 
 - [X] \(23 Dec 2021) Game should be fully implemented/complete by this point
   -  List of Evidence of Feature Completion
     - Status: Completed
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/game.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/91
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147314811-51ef7f65-5d09-4abb-b805-8d2aa55ab8bb.png)
+        - Screenshot #1 Game fully implemented
 
 - [X] \(23 Dec 2021) User’s score history will include pagination
   -  List of Evidence of Feature Completion
     - Status: Completed
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/91
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147315066-557501f9-2338-4a7c-bb99-ed46b6d85cd2.png)
+        - Screenshot #1 User's score history includes pagination
 
 - [X] \(23 Dec 2021) Home page will have a weekly, monthly, and lifetime scoreboard
   -  List of Evidence of Feature Completion
     - Status: Completed
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: https://ah682-prod.herokuapp.com/Project/home.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 https://github.com/lenahxo/IT202009/pull/91
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 ![image](https://user-images.githubusercontent.com/56138268/147315170-25050b88-2e9e-4611-82c4-3cb664faa13a.png)
+        - Screenshot #1 Homepage will have weekly, monthly, and lifetime scoreboards
 
 
 ### Intructions
