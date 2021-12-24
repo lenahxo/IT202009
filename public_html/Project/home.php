@@ -1,16 +1,23 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
-<h1>Home</h1>
-<?php
-if (is_logged_in(true)) {
-    echo "Welcome, " . get_username();
-} else {
-    echo "You're not logged in";
-}
-//shows session info
-echo "<pre>" . var_export($_SESSION, true) . "</pre>";
-?>
-<?php
-require(__DIR__ . "/../../partials/flash.php");
-?>
+<div class="container-fluid">
+    <h2>What it doooo!</h2>
+</div>
+<div>
+    <?php $duration = "week"; ?>
+    <?php require(__DIR__ . "/../../partials/top10_table.php"); ?>
+    <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
+</div>
+
+<div>
+    <?php $duration = "month"; ?>
+    <?php require(__DIR__ . "/../../partials/top10_table.php"); ?>
+    <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
+</div>
+
+<div>
+    <?php $duration = "lifetime"; ?>
+    <?php require(__DIR__ . "/../../partials/top10_table.php"); ?>
+    <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
+</div>
