@@ -168,6 +168,9 @@ try {
         <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
     </div>
 
+    
+    
+
     <?php if (!$edit) : ?>
         <div>Username: <?php se($username); ?></div>
         <div>Joined: <?php se($created); ?></div>

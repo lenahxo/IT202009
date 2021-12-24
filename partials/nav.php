@@ -49,6 +49,7 @@ require_once(__DIR__ . "/../lib/functions.php");
                         <ul class="dropdown-menu" aria-labelledby="rolesDropdown">
                             <li><a class="dropdown-item" href="<?php echo get_url('create_comp.php'); ?>">Create</a></li>
                             <li><a class="dropdown-item" href="<?php echo get_url('list_comps.php'); ?>">List</a></li>
+                            <li><a class="dropdown-item" href="<?php echo get_url('comp_history.php'); ?>">History</a></li>
                         </ul>
                     </li>
                     <?php endif; ?>
