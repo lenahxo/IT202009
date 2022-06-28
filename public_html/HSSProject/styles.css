@@ -1,0 +1,66 @@
+
+/** Style Sheet for LoveLost Letters website **/
+
+
+html
+{
+	background-image: url("./lovelost.jpg");
+	background-color: pink;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+body 
+{
+	line-height: 1;
+	margin: 1em;
+	position: absolute;
+	right: 50px;
+	text-align: right;
+}
+
+
+em 
+{
+	display: block;
+	width: 40em;
+	font-family: Lucida Handwriting;
+	color: #EEA5B0;
+}
+
+a 
+{
+	color: #FAD0DA;
+}
+
+a:hover 
+{
+	color: #EEA5B0;
+}
+
+a.one 
+{
+	text-decoration: none;
+}
+
+a.two 
+{
+	text-decoration: none;
+	bottom: -110px;
+	position: relative;
+}
+
+pre 
+{
+	white-space: pre-wrap;
+	line-height: 1.7em;
+	color: #999;
+}
+
+strong 
+{
+	color: #FAD0DA;
+}
